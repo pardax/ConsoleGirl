@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Dummy.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Idle.cpp" />
   </ItemGroup>

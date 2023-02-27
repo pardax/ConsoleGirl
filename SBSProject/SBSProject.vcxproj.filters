@@ -21,5 +21,8 @@
     <ClCompile Include="Idle.cpp">
       <Filter>리소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Dummy.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

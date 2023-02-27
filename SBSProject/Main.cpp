@@ -5,7 +5,7 @@
 
 using namespace std;
 
-int main()
+int main11()
 {
     system("mode con:cols=203 lines=65");
 
