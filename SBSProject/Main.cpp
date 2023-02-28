@@ -9,8 +9,5 @@ int main11()
 {
     system("mode con:cols=203 lines=65");
 
-    Idle temp = Idle();
-    temp.JustPrint();
-
     return 0;
 }
