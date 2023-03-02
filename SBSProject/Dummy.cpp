@@ -20,6 +20,9 @@ static int pieceIndex = 0;
 static int pointingIndex = 0;
 static int gameIndex = 0;
 
+static int happyCount = 0;
+static int pointingCount = 0;
+
 char* Buffer;
 
 char idle1[12500], idle2[12500], idle3[12500], idle4[12500];
@@ -36,6 +39,90 @@ void LoadHappy() {
     string Path_4 = "happy4.txt";
     string end = "\n";
     string temp;
+    string text1 = "\n\n\n   감사해요!";
+    string text2 = "\n\n\n   그렇게까지 말해주셔서 감사해요!";
+    string text3 = "\n\n\n   부끄러워요!";
+    ifstream file_1(Path_1);
+	if (file_1.is_open()) {
+		while (getline(file_1, temp)) {
+			strcat(happy1, temp.c_str());
+			strcat(happy1, end.c_str());
+		}
+		switch (happyCount) {
+		case 0:
+			strcat(happy1, text1.c_str());
+			break;
+		case 1:
+			strcat(happy1, text2.c_str());
+			break;
+		case 2:
+			strcat(happy1, text3.c_str());
+			break;
+		}
+		file_1.close();
+    }
+    ifstream file_2(Path_2);
+    if (file_2.is_open()) {
+        while (getline(file_2, temp)) {
+            strcat(happy2, temp.c_str());
+            strcat(happy2, end.c_str());
+        }
+        switch (happyCount) {
+        case 0:
+            strcat(happy2, text1.c_str());
+            break;
+
+        case 1:
+            strcat(happy2, text2.c_str());
+            break;
+        case 2:
+            strcat(happy2, text3.c_str());
+            break;
+        }
+        file_2.close();
+    }
+    ifstream file_3(Path_3);
+    if (file_3.is_open()) {
+        while (getline(file_3, temp)) {
+            strcat(happy3, temp.c_str());
+            strcat(happy3, end.c_str());
+        }
+        switch (happyCount) {
+        case 0:
+            strcat(happy3, text1.c_str());
+            break;
+        case 1:
+            strcat(happy3, text2.c_str());
+            break;
+        case 2:
+            strcat(happy3, text3.c_str());
+            break;
+
+        }
+        file_3.close();
+    }
+    ifstream file_4(Path_4);
+    if (file_4.is_open()) {
+        while (getline(file_4, temp)) {
+            strcat(happy4, temp.c_str());
+            strcat(happy4, end.c_str());
+        }
+        switch (happyCount) {
+        case 0:
+            strcat(happy4, text1.c_str());
+            break;
+
+        case 1:
+            strcat(happy4, text2.c_str());
+            break;
+        case 2:
+            strcat(happy4, text3.c_str());
+            break;
+
+        }
+        file_4.close();
+    }
+
 }
 void LoadPiece() {
     string Path_1 = "happy1.txt";
@@ -46,21 +133,36 @@ void LoadPiece() {
     string temp;
 }
 void LoadPointing() {
-    string Path_1 = "happy1.txt";
-    string Path_2 = "happy2.txt";
-    string Path_3 = "happy3.txt";
-    string Path_4 = "happy4.txt";
+    string Path_1 = "pointing.txt";
     string end = "\n";
+    string text1 = "\n\n\n   야채가 많이 들어간 햄버거를 좋아해요";
+    string text2 = "\n\n\n   가끔씩 피자를 시켜먹는 것을 좋아해요";
     string temp;
+    ifstream file_1(Path_1);
+    if (file_1.is_open()) {
+        while (getline(file_1, temp)) {
+            strcat(pointing, temp.c_str());
+            strcat(pointing, end.c_str());
+        }
+        switch (pointingCount) {
+        case 0:
+            strcat(pointing, text1.c_str());
+            break;
+        case 1:
+            strcat(pointing, text2.c_str());
+            break;
+        }
+        file_1.close();
+    }
 }
 void LoadIdle() {
     string Path_1 = "Idle.txt";
-    string text1 = "\n\n   무슨 음식 좋아해?";
-    string sText1 = "\n\n   ▶무슨 음식 좋아해?";
-    string text2 = "\n\n\n   무엇이 특기야?";
-    string sText2 = "\n\n\n   ▶무엇이 특기야?";
-    string text3 = "\n\n\n   칭찬한다.";
-    string sText3 = "\n\n\n   ▶칭찬한다.";
+    string text1 = "\n\n   칭찬한다.";
+    string sText1 = "\n\n   ▶칭찬한다.";
+    string text2 = "\n\n\n   장점을 물어본다";
+    string sText2 = "\n\n\n   ▶장점을 물어본다";
+    string text3 = "\n\n\n   좋아하는 음식을 물어본다.";
+    string sText3 = "\n\n\n   ▶좋아하는 음식을 물어본다.";
     string end = "\n";
     string temp;
 
@@ -254,6 +356,36 @@ void Render()
         ch = trueIdle;
         sprintf(Buffer, ch);
     }
+    else if (gameIndex == 2){ //happy
+        if (_count == 0) {
+            ch = happy1;
+            sprintf(Buffer, ch);
+            _count++;
+        }
+        else if (_count == 1) {
+            ch = happy2;
+            sprintf(Buffer, ch);
+            _count++;
+        }
+        else if (_count == 2) {
+            ch = happy3;
+            sprintf(Buffer, ch);
+            _count++;
+        }
+        else if (_count == 3) {
+            ch = happy4;
+            sprintf(Buffer, ch);
+            _count = 0;
+        }
+    }
+    else if (gameIndex == 3) {
+
+    }
+    else if (gameIndex == 4) {
+        ch = pointing;
+        sprintf(Buffer, ch);
+    }
+        
 
     Sleep(70);
     ScreenPrint(0, 0, Buffer);
@@ -269,6 +401,18 @@ void CleanArray(int index) {
     }
     else if (index == 1) {
         trueIdle[0] = '\0';
+    }
+    else if (index == 2) {
+        happy1[0] = '\0';
+        happy2[0] = '\0';
+        happy3[0] = '\0';
+        happy4[0] = '\0';
+    }
+    else if (index == 3) {
+
+    }
+    else if (index == 4) {
+        pointing[0] = '\0';
     }
 
 }
@@ -374,7 +518,8 @@ int main()
         LoadIdle();
         Render();
 
-        while (1) {
+        bool idlechk = true;
+        while (idlechk) {
             char c = _getch();
             switch (c) {
             case 'H':
@@ -419,12 +564,50 @@ int main()
                 break;
             case ' ':
                 CleanArray(1);
-                Render();
+                //Render();
+                idlechk = false;
                 break;
             }
         }
 
         //Phase 3
+        int random = rand() % 3;
+        switch (idleIndex)
+        {
+		case 0: //칭찬
+            gameIndex = 2;
+            _count = 0;
+            LoadHappy();
+            for (int i = 0; i < gameDelay; i++)
+            {
+                Render();
+            }
+            CleanArray(2);
+            gameIndex = 1;
+            if (happyCount == 2) 
+                happyCount = 0;
+            else 
+                happyCount++;
+            
+			break;
+		case 1: //특기질문
+            gameIndex = 4;
+			break;
+		case 2: //음식질문
+            gameIndex = 4;
+            LoadPointing();
+            for (int i = 0; i < gameDelay; i++)
+            {
+                Render();
+            }
+            CleanArray(4);
+            gameIndex = 1;
+            if (pointingCount == 1)
+                pointingCount = 0;
+            else
+                pointingCount++;
+			break;
+        }
     }
 
     Release();
