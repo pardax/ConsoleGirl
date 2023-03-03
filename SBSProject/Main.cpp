@@ -8,7 +8,6 @@
 #include <string.h>
 #include <conio.h>
 
-
 static int g_nScreenIndex;
 static HANDLE g_hScreen[2];
 
@@ -27,11 +26,7 @@ static int peaceCount = 0;
 
 char* Buffer;
 
-char idle1[12500], idle2[12500], idle3[12500], idle4[12500];
-char trueIdle[12500];
-char happy1[12500], happy2[12500], happy3[12500], happy4[12500];
-char peace1[12500], peace2[12500], peace3[12500], peace4[12500], peace5[12500], peace6[12500], peace7[12500], peace8[12500], peace9[12500];
-char pointing[12500];
+char buffer1[12500], buffer2[12500], buffer3[12500], buffer4[12500], buffer5[12500], buffer6[12500], buffer7[12500], buffer8[12500], buffer9[12500];
 
 using namespace std;
 
@@ -49,18 +44,18 @@ void LoadHappy() {
     ifstream file_1(Path_1);
 	if (file_1.is_open()) {
 		while (getline(file_1, temp)) {
-			strcat(happy1, temp.c_str());
-			strcat(happy1, end.c_str());
+			strcat(buffer1, temp.c_str());
+			strcat(buffer1, end.c_str());
 		}
 		switch (happyCount) {
 		case 0:
-			strcat(happy1, text1.c_str());
+			strcat(buffer1, text1.c_str());
 			break;
 		case 1:
-			strcat(happy1, text2.c_str());
+			strcat(buffer1, text2.c_str());
 			break;
 		case 2:
-			strcat(happy1, text3.c_str());
+			strcat(buffer1, text3.c_str());
 			break;
 		}
 		file_1.close();
@@ -68,19 +63,19 @@ void LoadHappy() {
     ifstream file_2(Path_2);
     if (file_2.is_open()) {
         while (getline(file_2, temp)) {
-            strcat(happy2, temp.c_str());
-            strcat(happy2, end.c_str());
+            strcat(buffer2, temp.c_str());
+            strcat(buffer2, end.c_str());
         }
         switch (happyCount) {
         case 0:
-            strcat(happy2, text1.c_str());
+            strcat(buffer2, text1.c_str());
             break;
 
         case 1:
-            strcat(happy2, text2.c_str());
+            strcat(buffer2, text2.c_str());
             break;
         case 2:
-            strcat(happy2, text3.c_str());
+            strcat(buffer2, text3.c_str());
             break;
         }
         file_2.close();
@@ -88,18 +83,18 @@ void LoadHappy() {
     ifstream file_3(Path_3);
     if (file_3.is_open()) {
         while (getline(file_3, temp)) {
-            strcat(happy3, temp.c_str());
-            strcat(happy3, end.c_str());
+            strcat(buffer3, temp.c_str());
+            strcat(buffer3, end.c_str());
         }
         switch (happyCount) {
         case 0:
-            strcat(happy3, text1.c_str());
+            strcat(buffer3, text1.c_str());
             break;
         case 1:
-            strcat(happy3, text2.c_str());
+            strcat(buffer3, text2.c_str());
             break;
         case 2:
-            strcat(happy3, text3.c_str());
+            strcat(buffer3, text3.c_str());
             break;
 
         }
@@ -108,19 +103,19 @@ void LoadHappy() {
     ifstream file_4(Path_4);
     if (file_4.is_open()) {
         while (getline(file_4, temp)) {
-            strcat(happy4, temp.c_str());
-            strcat(happy4, end.c_str());
+            strcat(buffer4, temp.c_str());
+            strcat(buffer4, end.c_str());
         }
         switch (happyCount) {
         case 0:
-            strcat(happy4, text1.c_str());
+            strcat(buffer4, text1.c_str());
             break;
 
         case 1:
-            strcat(happy4, text2.c_str());
+            strcat(buffer4, text2.c_str());
             break;
         case 2:
-            strcat(happy4, text3.c_str());
+            strcat(buffer4, text3.c_str());
             break;
 
         }
@@ -144,12 +139,12 @@ void LoadPiece() {
     ifstream file_1(Path_1);
     if (file_1.is_open()) {
         while (getline(file_1, temp)) {
-            strcat(peace1, temp.c_str());
-            strcat(peace1, end.c_str());
+            strcat(buffer1, temp.c_str());
+            strcat(buffer1, end.c_str());
         }
         switch (peaceCount) {
         case 0:
-            strcat(peace1, text1.c_str());
+            strcat(buffer1, text1.c_str());
             break;
         }
         file_1.close();
@@ -157,12 +152,12 @@ void LoadPiece() {
     ifstream file_2(Path_2);
     if (file_2.is_open()) {
         while (getline(file_2, temp)) {
-            strcat(peace2, temp.c_str());
-            strcat(peace2, end.c_str());
+            strcat(buffer2, temp.c_str());
+            strcat(buffer2, end.c_str());
         }
         switch (peaceCount) {
         case 0:
-            strcat(peace2, text1.c_str());
+            strcat(buffer2, text1.c_str());
             break;
         }
         file_2.close();
@@ -170,12 +165,12 @@ void LoadPiece() {
     ifstream file_3(Path_3);
     if (file_3.is_open()) {
         while (getline(file_3, temp)) {
-            strcat(peace3, temp.c_str());
-            strcat(peace3, end.c_str());
+            strcat(buffer3, temp.c_str());
+            strcat(buffer3, end.c_str());
         }
         switch (peaceCount) {
         case 0:
-            strcat(peace3, text1.c_str());
+            strcat(buffer3, text1.c_str());
             break;
         }
         file_3.close();
@@ -183,12 +178,12 @@ void LoadPiece() {
     ifstream file_4(Path_4);
     if (file_4.is_open()) {
         while (getline(file_4, temp)) {
-            strcat(peace4, temp.c_str());
-            strcat(peace4, end.c_str());
+            strcat(buffer4, temp.c_str());
+            strcat(buffer4, end.c_str());
         }
         switch (peaceCount) {
         case 0:
-            strcat(peace4, text1.c_str());
+            strcat(buffer4, text1.c_str());
             break;
         }
         file_4.close();
@@ -196,12 +191,12 @@ void LoadPiece() {
     ifstream file_5(Path_5);
     if (file_5.is_open()) {
         while (getline(file_5, temp)) {
-            strcat(peace5, temp.c_str());
-            strcat(peace5, end.c_str());
+            strcat(buffer5, temp.c_str());
+            strcat(buffer5, end.c_str());
         }
         switch (peaceCount) {
         case 0:
-            strcat(peace5, text1.c_str());
+            strcat(buffer5, text1.c_str());
             break;
         }
         file_5.close();
@@ -209,12 +204,12 @@ void LoadPiece() {
     ifstream file_6(Path_6);
     if (file_6.is_open()) {
         while (getline(file_6, temp)) {
-            strcat(peace6, temp.c_str());
-            strcat(peace6, end.c_str());
+            strcat(buffer6, temp.c_str());
+            strcat(buffer6, end.c_str());
         }
         switch (peaceCount) {
         case 0:
-            strcat(peace6, text1.c_str());
+            strcat(buffer6, text1.c_str());
             break;
         }
         file_6.close();
@@ -222,12 +217,12 @@ void LoadPiece() {
     ifstream file_7(Path_7);
     if (file_7.is_open()) {
         while (getline(file_7, temp)) {
-            strcat(peace7, temp.c_str());
-            strcat(peace7, end.c_str());
+            strcat(buffer7, temp.c_str());
+            strcat(buffer7, end.c_str());
         }
         switch (peaceCount) {
         case 0:
-            strcat(peace7, text1.c_str());
+            strcat(buffer7, text1.c_str());
             break;
         }
         file_7.close();
@@ -235,12 +230,12 @@ void LoadPiece() {
     ifstream file_8(Path_8);
     if (file_8.is_open()) {
         while (getline(file_8, temp)) {
-            strcat(peace8, temp.c_str());
-            strcat(peace8, end.c_str());
+            strcat(buffer8, temp.c_str());
+            strcat(buffer8, end.c_str());
         }
         switch (peaceCount) {
         case 0:
-            strcat(peace8, text1.c_str());
+            strcat(buffer8, text1.c_str());
             break;
         }
         file_8.close();
@@ -248,12 +243,12 @@ void LoadPiece() {
     ifstream file_9(Path_9);
     if (file_9.is_open()) {
         while (getline(file_9, temp)) {
-            strcat(peace9, temp.c_str());
-            strcat(peace9, end.c_str());
+            strcat(buffer9, temp.c_str());
+            strcat(buffer9, end.c_str());
         }
         switch (peaceCount) {
         case 0:
-            strcat(peace9, text1.c_str());
+            strcat(buffer9, text1.c_str());
             break;
         }
         file_9.close();
@@ -268,15 +263,15 @@ void LoadPointing() {
     ifstream file_1(Path_1);
     if (file_1.is_open()) {
         while (getline(file_1, temp)) {
-            strcat(pointing, temp.c_str());
-            strcat(pointing, end.c_str());
+            strcat(buffer1, temp.c_str());
+            strcat(buffer1, end.c_str());
         }
         switch (pointingCount) {
         case 0:
-            strcat(pointing, text1.c_str());
+            strcat(buffer1, text1.c_str());
             break;
         case 1:
-            strcat(pointing, text2.c_str());
+            strcat(buffer1, text2.c_str());
             break;
         }
         file_1.close();
@@ -296,24 +291,24 @@ void LoadIdle() {
     ifstream file_1(Path_1);
     if (file_1.is_open()) {
         while (getline(file_1, temp)) {
-            strcat(trueIdle, temp.c_str());
-            strcat(trueIdle, end.c_str());
+            strcat(buffer1, temp.c_str());
+            strcat(buffer1, end.c_str());
         }
         switch (idleIndex) {
         case 0:
-            strcat(trueIdle, sText1.c_str());
-            strcat(trueIdle, text2.c_str());
-            strcat(trueIdle, text3.c_str());
+            strcat(buffer1, sText1.c_str());
+            strcat(buffer1, text2.c_str());
+            strcat(buffer1, text3.c_str());
             break;
         case 1:
-            strcat(trueIdle, text1.c_str());
-            strcat(trueIdle, sText2.c_str());
-            strcat(trueIdle, text3.c_str());
+            strcat(buffer1, text1.c_str());
+            strcat(buffer1, sText2.c_str());
+            strcat(buffer1, text3.c_str());
             break;
         case 2:
-            strcat(trueIdle, text1.c_str());
-            strcat(trueIdle, text2.c_str());
-            strcat(trueIdle, sText3.c_str());
+            strcat(buffer1, text1.c_str());
+            strcat(buffer1, text2.c_str());
+            strcat(buffer1, sText3.c_str());
             break;
         }
         file_1.close();
@@ -334,18 +329,18 @@ void LoadText() {
     ifstream file_1(shakingPath_1);
     if (file_1.is_open()) {
         while (getline(file_1, temp)) {
-            strcat(idle1, temp.c_str());
-            strcat(idle1, end.c_str());
+            strcat(buffer1, temp.c_str());
+            strcat(buffer1, end.c_str());
         }
         switch (startingText) {
         case 0:
-            strcat(idle1, sText1.c_str());
+            strcat(buffer1, sText1.c_str());
             break;
         case 1:
-            strcat(idle1, sText2.c_str());
+            strcat(buffer1, sText2.c_str());
             break;
         case 2:
-            strcat(idle1, sText3.c_str());
+            strcat(buffer1, sText3.c_str());
             break;
         }
         file_1.close();
@@ -353,18 +348,18 @@ void LoadText() {
     ifstream file_2(shakingPath_2);
     if (file_2.is_open()) {
         while (getline(file_2, temp)) {
-            strcat(idle2, temp.c_str());
-            strcat(idle2, end.c_str());
+            strcat(buffer2, temp.c_str());
+            strcat(buffer2, end.c_str());
         }
         switch (startingText) {
         case 0:
-            strcat(idle2, sText1.c_str());
+            strcat(buffer2, sText1.c_str());
             break;
         case 1:
-            strcat(idle2, sText2.c_str());
+            strcat(buffer2, sText2.c_str());
             break;
         case 2:
-            strcat(idle2, sText3.c_str());
+            strcat(buffer2, sText3.c_str());
             break;
         }
         file_2.close();
@@ -372,18 +367,18 @@ void LoadText() {
     ifstream file_3(shakingPath_3);
     if (file_3.is_open()) {
         while (getline(file_3, temp)) {
-            strcat(idle3, temp.c_str());
-            strcat(idle3, end.c_str());
+            strcat(buffer3, temp.c_str());
+            strcat(buffer3, end.c_str());
         }
         switch (startingText) {
         case 0:
-            strcat(idle3, sText1.c_str());
+            strcat(buffer3, sText1.c_str());
             break;
         case 1:
-            strcat(idle3, sText2.c_str());
+            strcat(buffer3, sText2.c_str());
             break;
         case 2:
-            strcat(idle3, sText3.c_str());
+            strcat(buffer3, sText3.c_str());
             break;
         }
         file_3.close();
@@ -391,18 +386,18 @@ void LoadText() {
     ifstream file_4(shakingPath_4);
     if (file_4.is_open()) {
         while (getline(file_4, temp)) {
-            strcat(idle4, temp.c_str());
-            strcat(idle4, end.c_str());
+            strcat(buffer4, temp.c_str());
+            strcat(buffer4, end.c_str());
         }
         switch (startingText) {
         case 0:
-            strcat(idle4, sText1.c_str());
+            strcat(buffer4, sText1.c_str());
             break;
         case 1:
-            strcat(idle4, sText2.c_str());
+            strcat(buffer4, sText2.c_str());
             break;
         case 2:
-            strcat(idle4, sText3.c_str());
+            strcat(buffer4, sText3.c_str());
             break;
         }
         file_4.close();
@@ -462,100 +457,100 @@ void Render()
     ScreenClear();
     if (gameIndex == 0) {
 	    if (_count == 0) {
-            ch = idle1;
+            ch = buffer1;
 		    sprintf(Buffer, ch);
 		    _count++;
 	    }
 	    else if (_count == 1) {
-            ch = idle2;
+            ch = buffer2;
 		    sprintf(Buffer, ch);
 		    _count++;
         }
         else if (_count == 2) {
-            ch = idle3;
+            ch = buffer3;
             sprintf(Buffer, ch);
             _count++;
         }
         else if (_count == 3) {
-            ch = idle4;
+            ch = buffer4;
             sprintf(Buffer, ch);
             _count = 0;
         }
     }
     else if (gameIndex == 1) {
-        ch = trueIdle;
+        ch = buffer1;
         sprintf(Buffer, ch);
     }
     else if (gameIndex == 2){ //happy
         if (_count == 0) {
-            ch = happy1;
+            ch = buffer1;
             sprintf(Buffer, ch);
             _count++;
         }
         else if (_count == 1) {
-            ch = happy2;
+            ch = buffer2;
             sprintf(Buffer, ch);
             _count++;
         }
         else if (_count == 2) {
-            ch = happy3;
+            ch = buffer3;
             sprintf(Buffer, ch);
             _count++;
         }
         else if (_count == 3) {
-            ch = happy4;
+            ch = buffer4;
             sprintf(Buffer, ch);
             _count = 0;
         }
     }
     else if (gameIndex == 3) {
         if (_count == 0) {
-            ch = peace1;
+            ch = buffer1;
             sprintf(Buffer, ch);
             _count++;
         }
         else if (_count == 1) {
-            ch = peace2;
+            ch = buffer2;
             sprintf(Buffer, ch);
             _count++;
         }
         else if (_count == 2) {
-            ch = peace3;
+            ch = buffer3;
             sprintf(Buffer, ch);
             _count++;
         }
         else if (_count == 3) {
-            ch = peace4;
+            ch = buffer4;
             sprintf(Buffer, ch);
             _count++;
         }
         else if (_count == 4) {
-            ch = peace5;
+            ch = buffer5;
             sprintf(Buffer, ch);
             _count++;
         }
         else if (_count == 5) {
-            ch = peace6;
+            ch = buffer6;
             sprintf(Buffer, ch);
             _count++;
         }
         else if (_count == 6) {
-            ch = peace7;
+            ch = buffer7;
             sprintf(Buffer, ch);
             _count++;
         }
         else if (_count == 7) {
-            ch = peace8;
+            ch = buffer8;
             sprintf(Buffer, ch);
             _count++;
         }
         else if (_count == 8) {
-            ch = peace9;
+            ch = buffer9;
             sprintf(Buffer, ch);
         }
     }
     else if (gameIndex == 4) {
-        ch = pointing;
+        ch = buffer1;
         sprintf(Buffer, ch);
     }
         
@@ -565,37 +560,16 @@ void Render()
     ScreenFlipping();
 }
 
-void CleanArray(int index) {
-    if (index == 0) {
-        idle1[0] = '\0';
-        idle2[0] = '\0';
-        idle3[0] = '\0';
-        idle4[0] = '\0';
-    }
-    else if (index == 1) {
-        trueIdle[0] = '\0';
-    }
-    else if (index == 2) {
-        happy1[0] = '\0';
-        happy2[0] = '\0';
-        happy3[0] = '\0';
-        happy4[0] = '\0';
-    }
-    else if (index == 3) {
-        peace1[0] = '\0';
-        peace2[0] = '\0';
-        peace3[0] = '\0';
-        peace4[0] = '\0';
-        peace5[0] = '\0';
-        peace6[0] = '\0';
-        peace7[0] = '\0';
-        peace8[0] = '\0';
-        peace9[0] = '\0';
-    }
-    else if (index == 4) {
-        pointing[0] = '\0';
-    }
-
+void CleanArray() {
+	buffer1[0] = '\0';
+	buffer2[0] = '\0';
+	buffer3[0] = '\0';
+	buffer4[0] = '\0';
+	buffer5[0] = '\0';
+	buffer6[0] = '\0';
+	buffer7[0] = '\0';
+	buffer8[0] = '\0';
+	buffer9[0] = '\0';
 }
 
 void Release()
@@ -617,6 +591,7 @@ int main()
     cout << "Start◀" << '\n';
     cout << "Exit" << '\n';
 
+#pragma region Menu
     while (chk) {
         char c = _getch();
         switch(c) {
@@ -647,12 +622,12 @@ int main()
                 }
         }
     }
+#pragma endregion Menu
 
     CONSOLE_FONT_INFOEX cfi;
     cfi.cbSize = sizeof(CONSOLE_FONT_INFOEX);
     HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
     GetCurrentConsoleFontEx(hOut, 0, &cfi);
-    //cfi.FontWeight = 700;
     cfi.dwFontSize.X = 10;
     cfi.dwFontSize.Y = 10;
     SetCurrentConsoleFontEx(hOut, NULL, &cfi);
@@ -665,6 +640,7 @@ int main()
     Buffer = new char[13000];
     ScreenInit();
 
+#pragma region GameLoop
     bool started = false;
     while (1)
     {
@@ -675,21 +651,21 @@ int main()
             {
                 Render();
             }
-            CleanArray(0);
+            CleanArray();
             startingText = 1;
             LoadText();
             for (int i = 0; i < gameDelay; i++)
             {
                 Render();
             }
-            CleanArray(0);
+            CleanArray();
             startingText = 2;
             LoadText();
             for (int i = 0; i < gameDelay; i++)
             {
                 Render();
             }
-            CleanArray(0);
+            CleanArray();
             gameIndex = 1;
             started = true;
         }
@@ -703,19 +679,19 @@ int main()
             switch (c) {
             case 'H':
                 if (idleIndex == 0) {
-                    CleanArray(1);
+                    CleanArray();
                     idleIndex = 2;
                     LoadIdle();
                     Render();
                 }
                 else if (idleIndex == 1) {
-                    CleanArray(1);
+                    CleanArray();
                     idleIndex = 0;
                     LoadIdle();
                     Render();
                 }
                 else if (idleIndex == 2) {
-                    CleanArray(1);
+                    CleanArray();
                     idleIndex = 1;
                     LoadIdle();
                     Render();
@@ -723,26 +699,26 @@ int main()
                 break;
             case 'P':
                 if (idleIndex == 0) {
-                    CleanArray(1);
+                    CleanArray();
                     idleIndex = 1;
                     LoadIdle();
                     Render();
                 }
                 else if (idleIndex == 1) {
-                    CleanArray(1);
+                    CleanArray();
                     idleIndex = 2;
                     LoadIdle();
                     Render();
                 }
                 else if (idleIndex == 2) {
-                    CleanArray(1);
+                    CleanArray();
                     idleIndex = 0;
                     LoadIdle();
                     Render();
                 }
                 break;
             case ' ':
-                CleanArray(1);
+                CleanArray();
                 //Render();
                 idlechk = false;
                 break;
@@ -761,7 +737,7 @@ int main()
             {
                 Render();
             }
-            CleanArray(2);
+            CleanArray();
             gameIndex = 1;
             if (happyCount == 2) 
                 happyCount = 0;
@@ -777,7 +753,7 @@ int main()
             {
                 Render();
             }
-            CleanArray(3);
+            CleanArray();
             gameIndex = 1;
 			break;
 		case 2: //음식질문
@@ -787,7 +763,7 @@ int main()
             {
                 Render();
             }
-            CleanArray(4);
+            CleanArray();
             gameIndex = 1;
             if (pointingCount == 1)
                 pointingCount = 0;
@@ -796,6 +772,7 @@ int main()
 			break;
         }
     }
+#pragma endregion GameLoop
 
     Release();
     ScreenRelease();
